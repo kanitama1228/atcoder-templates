@@ -1,0 +1,18 @@
+{
+  "name": "atcoder",
+  "private": true,
+  "scripts": {
+    "test": "oj test -c 'npx ts-node Main.ts'",
+    "submit": "acc submit -s -- -y"
+  },
+  "devDependencies": {
+    "@types/node": "~17.0.21",
+    "ts-node": "^10.9.1",
+    "tsc": "^2.0.4",
+    "tstl": "~2.5.12",
+    "typescript": "~3.8"
+  },
+  "volta": {
+    "node": "12.16.1"
+  }
+}
