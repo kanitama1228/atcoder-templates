@@ -2,7 +2,6 @@
     "task": {
         "program": [
             "Main.ts",
-            "interactive.ts",
             "package.json",
             "package-lock.json",
             "tsconfig.json"

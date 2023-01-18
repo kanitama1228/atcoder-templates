@@ -3,12 +3,16 @@
   "private": true,
   "scripts": {
     "test": "oj test -c 'npx ts-node Main.ts'",
-    "submit": "acc submit -s -- -y"
+    "submit": "acc submit -s -- -y",
+    "lib-test": "jest"
   },
   "devDependencies": {
+    "@jest/globals": "^25",
+    "@types/jest": "^25",
     "@types/node": "~17.0.21",
+    "jest": "^25",
+    "ts-jest": "^25",
     "ts-node": "^10.9.1",
-    "tsc": "^2.0.4",
     "tstl": "~2.5.12",
     "typescript": "~3.8"
   },
