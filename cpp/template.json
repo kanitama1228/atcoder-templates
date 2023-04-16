@@ -1,0 +1,15 @@
+{
+    "task": {
+        "program": [
+            "Main.cpp",
+            "package.json"
+        ],
+        "submit": "Main.cpp"
+    },
+    "contest": {
+        "static": [
+            ".vscode/tasks.json",
+            ".vscode/launch.json"
+        ]
+    }
+}
