@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "(LLDB) Debug",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${fileDirname}/${fileBasenameNoExtension}",
+      "cwd": "${fileDirname}/",
+      "stdio": "${fileDirname}/test/sample-1.in",
+      "stopOnEntry": false,
+      "preLaunchTask": "clang++ build active file",
+    }
+  ]
+}
