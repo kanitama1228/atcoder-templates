@@ -9,15 +9,18 @@
         "-std=gnu++17",
         "-g",
         "-Wall",
+        "-Wextra",
+        "-Wno-sign-compare",
+        "-Werror=uninitialized",
+        "-Werror=shadow",
+        "-O2",
+        "-DONLINE_JUDGE",
         "${file}",
         "-I",
         "/Library/Developer/CommandLineTools/usr/include/ac-library",
         "-o",
         "${fileDirname}/${fileBasenameNoExtension}"
       ],
-      "options": {
-        "cwd": "${fileDirname}"
-      },
       "problemMatcher": [
         "$gcc"
       ],
@@ -37,12 +40,19 @@
         "-x",
         "c++",
         "-Wall",
+        "-Wextra",
+        "-Wno-sign-compare",
+        "-Werror=uninitialized",
+        "-DONLINE_JUDGE",
         "${file}",
         "-I",
         "/Library/Developer/CommandLineTools/usr/include/ac-library",
         "-o",
         "${fileDirname}/${fileBasenameNoExtension}",
         "--debug"
+      ],
+      "problemMatcher": [
+        "$gcc"
       ],
       "hide": true,
       "group": "build"
@@ -57,6 +67,10 @@
       "dependsOn": [
         "g++ build active file"
       ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
       "presentation": {
         "reveal": "always",
         "focus": true,
