@@ -3,13 +3,12 @@
         "program": [
             "Main.cpp"
         ],
-        "submit": "Main.cpp"
+        "submit": "Main.bundle.cpp"
     },
     "contest": {
         "static": [
-            ".vscode/tasks.json",
-            ".vscode/launch.json",
-            ".vscode/settings.json"
+            ".vscode/",
+            "_lib/"
         ]
     }
 }

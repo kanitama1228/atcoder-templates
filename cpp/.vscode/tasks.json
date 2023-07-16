@@ -3,6 +3,14 @@
   "tasks": [
     {
       "type": "shell",
+      "label": "bundle third party library",
+      "command": "oj-bundle -I ${workspaceFolder}/_lib/ ${file} > ${fileDirname}/${fileBasenameNoExtension}.bundle.cpp",
+      "group": {
+        "kind": "build",
+      }
+    },
+    {
+      "type": "shell",
       "label": "g++ build active file",
       "command": "g++",
       "args": [
@@ -15,11 +23,11 @@
         "-Werror=shadow",
         "-O2",
         "-DONLINE_JUDGE",
-        "${file}",
+        "${fileDirname}/${fileBasenameNoExtension}.bundle.cpp",
         "-I",
         "/Library/Developer/CommandLineTools/usr/include/ac-library",
         "-o",
-        "${fileDirname}/${fileBasenameNoExtension}"
+        "${fileDirname}/${fileBasenameNoExtension}.bundle"
       ],
       "problemMatcher": [
         "$gcc"
@@ -28,39 +36,15 @@
       "group": {
         "kind": "build",
         "isDefault": true
-      }
-    },
-    {
-      "type": "shell",
-      "label": "clang++ build active file",
-      "command": "clang++",
-      "args": [
-        "-std=c++17",
-        "-stdlib=libc++",
-        "-x",
-        "c++",
-        "-Wall",
-        "-Wextra",
-        "-Wno-sign-compare",
-        "-Werror=uninitialized",
-        "-DONLINE_JUDGE",
-        "${file}",
-        "-I",
-        "/Library/Developer/CommandLineTools/usr/include/ac-library",
-        "-o",
-        "${fileDirname}/${fileBasenameNoExtension}",
-        "--debug"
-      ],
-      "problemMatcher": [
-        "$gcc"
-      ],
-      "hide": true,
-      "group": "build"
+      },
+      "dependsOn": [
+        "bundle third party library"
+      ]
     },
     {
       "label": "CheckTestCase",
       "type": "shell",
-      "command": "oj test -c \"${fileDirname}/${fileBasenameNoExtension}\"",
+      "command": "oj test -c ${fileDirname}/${fileBasenameNoExtension}.bundle",
       "options": {
         "cwd": "${fileDirname}"
       },
@@ -88,7 +72,39 @@
         "reveal": "always",
         "focus": true,
         "panel": "shared",
-      }
+      },
+      "dependsOn": [
+        "bundle third party library"
+      ],
+    },
+    {
+      "type": "shell",
+      "label": "clang++ build active file",
+      "command": "clang++",
+      "args": [
+        "-std=c++17",
+        "-stdlib=libc++",
+        "-x",
+        "c++",
+        "-Wall",
+        "-Wextra",
+        "-Wno-sign-compare",
+        "-Werror=uninitialized",
+        "-DONLINE_JUDGE",
+        "${file}",
+        "-I",
+        "/Library/Developer/CommandLineTools/usr/include/ac-library",
+        "-I",
+        "${workspaceFolder}/_lib",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}",
+        "--debug"
+      ],
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "hide": true,
+      "group": "build"
     },
   ]
 }

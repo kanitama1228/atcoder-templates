@@ -2,6 +2,9 @@
   "[cpp]": {
     "editor.defaultFormatter": "ms-vscode.cpptools"
   },
+  "files.associations": {
+    "iostream": "cpp"
+  },
   "code-runner.executorMap": {
     "cpp": "cd $dir && rm $dir/$fileNameWithoutExt && clang++ -std=c++17 $fileName -o $fileNameWithoutExt && $dir/$fileNameWithoutExt",
   },
@@ -17,7 +20,7 @@
   "C_Cpp.default.includePath": [
     "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include", // edit
     "/Library/Developer/CommandLineTools/usr/include/ac-library", // edit
-    "${workspaceFolder}/**"
+    "${workspaceFolder}/_lib"
   ],
   "C_Cpp.default.intelliSenseMode": "clang-x86", // macOS
   "C_Cpp.default.compilerPath": "/usr/local/bin/g++",
