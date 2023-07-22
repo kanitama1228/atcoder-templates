@@ -74,8 +74,23 @@
         "panel": "shared",
       },
       "dependsOn": [
-        "bundle third party library"
+        "bundle third party library",
+        "Archive Code"
       ],
+    },
+    {
+      "label": "Archive Code",
+      "type": "shell",
+      "command": "mkdir -p _archive && ver=$(ls _archive/rev* | wc -l | awk '$0+=1') && cp ${file} _archive/rev${ver}.cpp",
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "hide": false,
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+      },
     },
     {
       "type": "shell",
