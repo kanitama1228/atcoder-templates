@@ -44,7 +44,7 @@
     {
       "label": "CheckTestCase",
       "type": "shell",
-      "command": "oj test -c ${fileDirname}/${fileBasenameNoExtension}.bundle",
+      "command": "oj test -c ${fileDirname}/${fileBasenameNoExtension}.bundle; rm ${fileBasenameNoExtension}.bundle",
       "options": {
         "cwd": "${fileDirname}"
       },
@@ -64,7 +64,7 @@
     {
       "label": "SubmitCode",
       "type": "shell",
-      "command": "acc submit -s -- -y",
+      "command": "acc submit -s -- -y; rm ${fileBasenameNoExtension}",
       "options": {
         "cwd": "${fileDirname}"
       },
