@@ -71,6 +71,53 @@ inline vector<pair<T, int>> prime_factorize(T n) {
   return r;
 }
 
+/**
+ * 点
+ */
+template <typename T,
+          typename = typename enable_if<is_arithmetic<T>::value, T>::type>
+struct Point {
+  T x;
+  T y;
+};
+
+/**
+ * 線分
+ */
+template <typename T>
+struct Segment {
+  Point<T> p1;
+  Point<T> p2;
+};
+
+/**
+ * 外積
+ */
+template <typename T>
+ll outer_product(Point<T> &O, Point<T> &A, Point<T> &B) {
+  return (O.x - A.x) * (B.y - O.y) + (O.y - A.y) * (O.x - B.x);
+}
+
+/**
+ * 線分の交差判定
+ */
+template <typename T>
+bool isCrossed(Segment<T> &AB, Segment<T> &CD) {
+  return isOpposite(AB, CD.p1, CD.p2) && isOpposite(CD, AB.p1, AB.p2);
+}
+/**
+ * 線分basisに対して2点a, bが反対の側に存在するか
+ */
+template <typename T>
+bool isOpposite(Segment<T> &basis, Point<T> &a, Point<T> &b) {
+  Point<T> p = basis.p1;
+  Point<T> q = basis.p2;
+
+  auto s = outer_product(p, q, a);
+  auto t = outer_product(p, q, b);
+  return s * t < 0;
+}
+
 }  // namespace atcoderex
 
 #endif
