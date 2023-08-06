@@ -12,9 +12,9 @@
     {
       "type": "shell",
       "label": "g++ build active file",
-      "command": "g++",
+      "command": "g++-12",
       "args": [
-        "-std=gnu++17",
+        "-std=gnu++2b",
         "-g",
         "-Wall",
         "-Wextra",
@@ -23,11 +23,18 @@
         "-Werror=shadow",
         "-O2",
         "-DONLINE_JUDGE",
+        "-DATCODER",
+        "-mtune=native",
+        "-march=native",
+        "-fconstexpr-depth=2147483647",
+        "-fconstexpr-loop-limit=2147483647",
+        "-fconstexpr-ops-limit=2147483647",
         "${fileDirname}/${fileBasenameNoExtension}.bundle.cpp",
-        "-I",
-        "/Library/Developer/CommandLineTools/usr/include/ac-library",
-        "-o",
-        "${fileDirname}/${fileBasenameNoExtension}.bundle"
+        "-I/Library/Developer/CommandLineTools/usr/include/ac-library",
+        "-I/usr/local/include",
+        "-I/usr/local/include/eigen3",
+        "-L/usr/local/lib",
+        "-o${fileDirname}/${fileBasenameNoExtension}.bundle"
       ],
       "problemMatcher": [
         "$gcc"
@@ -97,7 +104,7 @@
       "label": "clang++ build active file",
       "command": "clang++",
       "args": [
-        "-std=c++17",
+        "-std=c++2b",
         "-stdlib=libc++",
         "-x",
         "c++",
@@ -106,13 +113,15 @@
         "-Wno-sign-compare",
         "-Werror=uninitialized",
         "-DONLINE_JUDGE",
+        "-DATCODER",
         "${file}",
-        "-I",
-        "/Library/Developer/CommandLineTools/usr/include/ac-library",
-        "-I",
-        "${workspaceFolder}/_lib",
-        "-o",
-        "${fileDirname}/${fileBasenameNoExtension}",
+        "-fconstexpr-depth=2147483647",
+        "-fconstexpr-steps=2147483647",
+        "-I/Library/Developer/CommandLineTools/usr/include/ac-library",
+        "-I/usr/local/include",
+        "-I/usr/local/include/eigen3",
+        "-I${workspaceFolder}/_lib",
+        "-o${fileDirname}/${fileBasenameNoExtension}",
         "--debug"
       ],
       "problemMatcher": [

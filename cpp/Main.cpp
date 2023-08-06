@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
+#include <gmpxx.h>
 
+#include <Eigen/Core>
 #include <atcoder/all>
+#include <boost/range/algorithm.hpp>
 
 #include "atcoder-ex/all.hpp"
 
